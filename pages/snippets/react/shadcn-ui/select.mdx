@@ -1,0 +1,89 @@
+# Select
+
+```tsx
+import {
+  Select as SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+
+type SelectOptionType = {
+  label: string;
+  value: string;
+};
+
+type SelectProps = {
+  options: SelectOptionType[];
+  label: string;
+  placeholder: string;
+  id?: string;
+  name?: string;
+  onBlur?: () => void;
+  onChange?: (option: SelectOptionType) => void;
+  defaultValue?: string;
+  value?: string;
+  inline?: boolean;
+  srOnlyLabel?: boolean;
+};
+
+const Select = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  SelectProps
+>(
+  (
+    {
+      options,
+      placeholder,
+      id,
+      label,
+      name,
+      onBlur,
+      onChange,
+      defaultValue,
+      value,
+      inline,
+      srOnlyLabel,
+    },
+    ref
+  ) => {
+    const elementId = id || name || React.useId();
+
+    return (
+      <div
+        className={cn("flex", {
+          "flex-col gap-1.5": !inline,
+          "items-center gap-3": inline,
+        })}
+      >
+        <label
+          htmlFor={elementId}
+          className={cn({
+            "sr-only": srOnlyLabel,
+          })}
+        >
+          {label}
+        </label>
+        <SelectRoot
+          name={name}
+          defaultValue={defaultValue}
+          value={value}
+          onValueChange={onChange}
+        >
+          <SelectTrigger ref={ref} id={elementId} onBlur={onBlur}>
+            <SelectValue placeholder={placeholder} />
+          </SelectTrigger>
+          <SelectContent>
+            {options.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </SelectRoot>
+      </div>
+    );
+  }
+);
+```

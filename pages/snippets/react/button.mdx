@@ -1,0 +1,44 @@
+# Button
+
+## Unstyled
+
+```tsx
+import * as React from "react";
+import { VariantProps, cva } from "class-variance-authority";
+import { cn } from "@/utils/cn";
+
+const buttonVariants = cva("", {
+  variants: {
+    variant: {
+      default: "",
+      destructive: "",
+      white: "",
+      whiteDestructive: "",
+    },
+    size: {
+      default: "",
+      small: "",
+      large: "",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+  },
+});
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {};
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, size, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant, size }), className)}
+        {...props}
+      />
+    );
+  }
+);
+```

@@ -1,0 +1,20 @@
+# Classname
+
+Just a simple utility to merge tailwind class names together without conflicts.
+
+## Installation
+
+```bash
+npm install clsx tailwind-merge
+```
+
+### Code
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```

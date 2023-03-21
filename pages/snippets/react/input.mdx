@@ -1,0 +1,64 @@
+# Input
+
+## Unstyled
+
+```tsx
+import * as React from "react";
+import { cn } from "@/utils/cn";
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ id, name, className, ...props }, ref) => {
+    const elementId = id || name || React.useId();
+
+    return (
+      <input
+        ref={ref}
+        id={elementId}
+        name={name}
+        className={cn(className)}
+        {...props}
+      />
+    );
+  }
+);
+```
+
+## Unstyled With Label
+
+```tsx
+import * as React from "react";
+import { cn } from "@/utils/cn";
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  srOnlyLabel?: boolean;
+};
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ label, id, name, className, ...props }, ref) => {
+    const elementId = id || name || React.useId();
+
+    return (
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor={elementId}
+          className={cn({
+            "sr-only": srOnlyLabel,
+          })}
+        >
+          {label}
+        </label>
+        <input
+          ref={ref}
+          id={elementId}
+          name={name}
+          className={cn(className)}
+          {...props}
+        />
+      </div>
+    );
+  }
+);
+```

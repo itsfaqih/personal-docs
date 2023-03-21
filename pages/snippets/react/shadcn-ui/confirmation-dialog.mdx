@@ -1,0 +1,49 @@
+# Confirmation Dialog
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+type ConfirmationDialogProps = {
+  trigger: React.ReactNode;
+  title: string;
+  description: React.ReactNode;
+  confirmButtonLabel: string;
+  destructive?: boolean;
+};
+
+export function ConfirmationDialog({
+  trigger,
+  title,
+  description,
+  confirmButtonLabel,
+  destructive = false,
+}: ConfirmationDialogProps) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription className="flex flex-col gap-y-2 text-base text-gray-900">
+            {description}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant={destructive ? "destructive" : "default"}>
+            {confirmButtonLabel}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
