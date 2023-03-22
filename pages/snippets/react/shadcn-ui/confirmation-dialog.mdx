@@ -1,6 +1,7 @@
 # Confirmation Dialog
 
-```tsx
+```tsx copy
+import * as React from "react";
 import {
   Dialog,
   DialogContent,
@@ -33,9 +34,7 @@ export function ConfirmationDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription className="flex flex-col gap-y-2 text-base text-gray-900">
-            {description}
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button variant={destructive ? "destructive" : "default"}>

@@ -2,14 +2,28 @@
 
 ## Unstyled
 
-```tsx
+```tsx copy
 import * as React from "react";
+import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
+const inputVariants = cva("", {
+  variants: {
+    state: {
+      default: "",
+      invalid: "",
+    },
+  },
+  defaultVariants: {
+    state: "default",
+  },
+});
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof inputVariants> & {};
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ id, name, className, ...props }, ref) => {
+  ({ state, id, name, className, ...props }, ref) => {
     const elementId = id || name || React.useId();
 
     return (
@@ -17,7 +31,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         id={elementId}
         name={name}
-        className={cn(className)}
+        className={cn(inputVariants({ state }), className)}
         {...props}
       />
     );
@@ -27,17 +41,31 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 ## Unstyled With Label
 
-```tsx
+```tsx copy
 import * as React from "react";
+import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
-  srOnlyLabel?: boolean;
-};
+const inputVariants = cva("", {
+  variants: {
+    state: {
+      default: "",
+      invalid: "",
+    },
+  },
+  defaultVariants: {
+    state: "default",
+  },
+});
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof inputVariants> & {
+    label: string;
+    srOnlyLabel?: boolean;
+  };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, id, name, className, ...props }, ref) => {
+  ({ label, srOnlyLabel, state, id, name, className, ...props }, ref) => {
     const elementId = id || name || React.useId();
 
     return (
