@@ -1,0 +1,60 @@
+# Project structure
+
+## Vite
+```
+📦src
+ ┣ 📂assets
+ ┣ 📂components
+ ┃ ┣ 📂data // For reusable data-related components
+ ┃ ┃ ┣ 📜<name>.select.tsx
+ ┃ ┃ ┣ 📜<name>.combobox.tsx
+ ┃ ┃ ┗ 📜<name>.dialog.tsx
+ ┃ ┣ 📂base // For base components
+ ┃ ┃ ┗ 📜<name>.tsx
+ ┃ ┣ 📂derived // For derived components
+ ┃ ┃ ┗ 📜<name>.tsx
+ ┣ 📂hooks // For custom hooks
+ ┃ ┗ 📜use-<name>.ts
+ ┣ 📂libs // For library wrapper
+ ┃ ┗ 📜<name>.lib.ts
+ ┣ 📂mocks // For MSW mock data
+ ┃ ┣ 📂data
+ ┃ ┃ ┗ 📜<name>.data.ts
+ ┃ ┣ 📜browser.ts
+ ┃ ┣ 📜handlers.ts
+ ┃ ┗ 📜<name>.handler.ts
+ ┣ 📂pages
+ ┃ ┣ 📂<route name>
+ ┃ ┃ ┣ 📂<sub route name> // For sub route with pages with sub page (tab/step)
+ ┃ ┃ ┃ ┣ 📂create
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.create.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.create.tsx
+ ┃ ┃ ┃ ┣ 📂show
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.show.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.show.tsx
+ ┃ ┃ ┃ ┣ 📂index
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.index.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.index.tsx
+ ┃ ┃ ┣ 📂<sub route name> // For sub route with pages without sub page (tab/step)
+ ┃ ┃ ┃ ┃ ┣ 📜<sub route name>.create.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜<sub route name>.index.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.show.tsx
+ ┃ ┃ ┣ 📜<sub route name>.tsx // For sub route with only one page
+ ┃ ┃ ┣ 📜<route name>.error.tsx // Route's error boundary element
+ ┃ ┃ ┗ 📜<route name>.root.tsx // Route's root element
+ ┣ 📂queries // For tanstack queries
+ ┃ ┗ 📜<name>.query.ts
+ ┣ 📂schemas // For zod schemas
+ ┃ ┗ 📜<name>.schema.ts
+ ┣ 📂utils // For reusable utility functions
+ ┃ ┗ 📜<name>.util.ts
+ ┣ 📜index.css
+ ┣ 📜main.tsx
+ ┣ 📜reset.d.ts
+ ┗ 📜vite-env.d.ts
+ 📦tests
+ ┣ 📂e2e
+ ┃ ┗ 📜<route name>.test.ts
+ ┣ 📂unit
+ ┃ ┗ 📜<name>.test.ts
+```
