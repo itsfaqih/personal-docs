@@ -1,0 +1,46 @@
+# REST API Zod Schema
+
+## Usage
+
+```ts filename="<name>.schema.ts" copy
+import { z } from "zod";
+
+export const NameIndexSchema = z.object({}).array();
+
+export type NameIndexSchema = z.infer<typeof NameIndexSchema>;
+
+export const NameIndexFilterSchema = z.object({});
+
+export type NameIndexFilterSchema = z.infer<typeof NameIndexFilterSchema>;
+
+export const NameIndexFilterToSearchParamsTransfomer =
+  NameIndexFilterSchema.transform((filter) => {
+    return new URLSearchParams({
+      // ...
+    });
+  });
+
+export const SearchParamsToNameIndexFilterTransfomer = z
+  .instanceof(URLSearchParams)
+  .transform((searchParams) => {
+    return NameIndexFilter.parse({
+      // ...
+    });
+  });
+
+export const NameShowSchema = z.object({});
+
+export type NameShowSchema = z.infer<typeof NameShowSchema>;
+
+export const NameCreateSchema = z.object({});
+
+export type NameCreateSchema = z.infer<typeof NameCreateSchema>;
+
+export const NameUpdateSchema = z.object({});
+
+export type NameUpdateSchema = z.infer<typeof NameUpdateSchema>;
+
+export const NameDeleteSchema = z.object({});
+
+export type NameDeleteSchema = z.infer<typeof NameDeleteSchema>;
+```

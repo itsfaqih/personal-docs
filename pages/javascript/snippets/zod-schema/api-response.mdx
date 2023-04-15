@@ -1,0 +1,25 @@
+# API Response Zod Schema
+
+## Usage
+
+```ts filename="api.schema.ts" copy
+import { z } from "zod";
+
+export const APIResponseSchema = z.object({
+  data: z.unknown(),
+  meta: z
+    .object({
+      pagination: z
+        .object({
+          current_page: z.number().int(),
+          per_page: z.number().int(),
+          from: z.number().int(),
+          to: z.number().int(),
+          total: z.number().int(),
+          last_page: z.number().int(),
+        })
+        .optional(),
+    })
+    .optional(),
+});
+```

@@ -1,6 +1,7 @@
 # Project structure
 
 ## Vite
+
 ```
 📦src
  ┣ 📂assets
@@ -23,17 +24,19 @@
  ┃ ┣ 📜browser.ts
  ┃ ┣ 📜handlers.ts
  ┃ ┗ 📜<name>.handler.ts
+ ┣ 📂mutations // For tanstack query mutations
+ ┃ ┗ 📜<name>.mutation.ts
  ┣ 📂pages
  ┃ ┣ 📂<route name>
  ┃ ┃ ┣ 📂<sub route name> // For sub route with pages with sub page (tab/step)
  ┃ ┃ ┃ ┣ 📂create
- ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.create.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.<sub route name>.create.tsx
  ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.create.tsx
  ┃ ┃ ┃ ┣ 📂show
- ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.show.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.<sub route name>.show.tsx
  ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.show.tsx
  ┃ ┃ ┃ ┣ 📂index
- ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.index.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜<tab/step name>.<sub route name>.index.tsx
  ┃ ┃ ┃ ┃ ┗ 📜<sub route name>.index.tsx
  ┃ ┃ ┣ 📂<sub route name> // For sub route with pages without sub page (tab/step)
  ┃ ┃ ┃ ┃ ┣ 📜<sub route name>.create.tsx
@@ -42,7 +45,7 @@
  ┃ ┃ ┣ 📜<sub route name>.tsx // For sub route with only one page
  ┃ ┃ ┣ 📜<route name>.error.tsx // Route's error boundary element
  ┃ ┃ ┗ 📜<route name>.root.tsx // Route's root element
- ┣ 📂queries // For tanstack queries
+ ┣ 📂queries // For tanstack query queries
  ┃ ┗ 📜<name>.query.ts
  ┣ 📂schemas // For zod schemas
  ┃ ┗ 📜<name>.schema.ts
